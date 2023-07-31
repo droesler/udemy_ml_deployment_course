@@ -3,8 +3,8 @@ from feature_engine.encoding import OneHotEncoder, RareLabelEncoder
 
 # for imputation
 from feature_engine.imputation import (
-    AddMissingIndicator, 
-    CategoricalImputer, 
+    AddMissingIndicator,
+    CategoricalImputer,
     MeanMedianImputer,
 )
 from sklearn.linear_model import LogisticRegression
@@ -38,7 +38,7 @@ titanic_pipe = Pipeline(
         ),
         # Extract letter from cabin
         (
-            "extract_letter", 
+            "extract_letter",
             ExtractLetterTransformer(variables=config.model_config.cabin_vars),
         ),
         # == CATEGORICAL ENCODING ======
@@ -54,7 +54,8 @@ titanic_pipe = Pipeline(
         (
             "categorical_encoder",
             OneHotEncoder(
-                drop_last=True, variables=config.model_config.categorical_vars,
+                drop_last=True,
+                variables=config.model_config.categorical_vars,
             ),
         ),
         # scale
